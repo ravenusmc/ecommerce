@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ecommerce</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-left">
+              <li>
+                  <%= link_to root_path, class: "navbar-brand" do %>
+                      <i class="fa fa-home"></i> Home
+                  <% end %>
+              </li>
+              <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Items by Category<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                  <% @categories.each do |category| %>
+                    <li><%= link_to category.name, categorical_path(id: category.id) %></li>
+                  <% end %>
+              </ul>
+            </li>
+            <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Items by Brand<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                  <% @brands.each do |brand| %>
+                    <li><%= link_to brand, brandwise_path(brand: brand) %></li>
+                  <% end %>
+              </ul>
+            </li>
+            <!-- Future Links! -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+                <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+                <li><%= link_to "Sign Up",  new_user_registration_path %></li>
+               <li><%= link_to "Forgot Password",  new_user_password_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+	<div class="container">
+		<%= yield %>
+	</div>
+
+</body>
+</html>
