@@ -52,3 +52,5 @@ gem 'cancan'
 
 gem 'paperclip'
 
+gem 'figaro'
+
