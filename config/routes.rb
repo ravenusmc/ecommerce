@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'checkout' => 'cart#checkout'
 
+  post 'order_complete' => 'cart#order_complete'
+
   resources :orders
 
   resources :line_items

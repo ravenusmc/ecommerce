@@ -54,3 +54,5 @@ gem 'paperclip'
 
 gem 'figaro'
 
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
